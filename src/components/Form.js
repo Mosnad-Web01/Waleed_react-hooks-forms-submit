@@ -12,10 +12,21 @@ function Form(props) {
     setLastName(event.target.value);
   }
 
+  function handleSubmit(event) {
+    event.preventDefault(); // Prevent the default form submission
+    console.log(`Submitted: ${firstName} ${lastName}`); // Log the values
+  }
+
   return (
-    <form>
-      <input type="text" onChange={handleFirstNameChange} value={firstName} />
-      <input type="text" onChange={handleLastNameChange} value={lastName} />
+    <form onSubmit={handleSubmit}>
+      <label>
+        First Name:
+        <input type="text" onChange={handleFirstNameChange} value={firstName} />
+      </label>
+      <label>
+        Last Name:
+        <input type="text" onChange={handleLastNameChange} value={lastName} />
+      </label>
       <button type="submit">Submit</button>
     </form>
   );
